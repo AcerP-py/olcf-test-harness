@@ -107,3 +107,10 @@ class rgt_config_file:
             logger.log_info(f'Using machine config: {configfile}')
         return configfile
 
+    @staticmethod
+    def get_default_config_file_name() -> str:
+        name = "master"
+        if "OLCF_HARNESS_MACHINE" in os.environ:
+            name = os.environ["OLCF_HARNESS_MACHINE"]
+
+        return name + ".ini"
